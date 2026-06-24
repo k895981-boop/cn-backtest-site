@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 from datetime import datetime, timedelta
 
 # --- 1. 基礎設定 ---
-st.set_page_config(page_title="結構型商品戰情室 (V10.8 - With Profile)", layout="wide")
+st.set_page_config(page_title="結構型商品小幫手", layout="wide")
 
 # ==========================================
 # 🔐 密碼保護機制
@@ -39,7 +39,27 @@ if not check_password():
 # 🔓 主程式開始
 # ==========================================
 
-st.title("📊 FCN - 關鍵點位與長週期風險回測")
+# 防複製、防右鍵保護
+st.markdown("""
+<style>
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+<script>
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) {
+        e.preventDefault();
+    }
+});
+</script>
+""", unsafe_allow_html=True)
+
+st.title("📊 結構型商品小幫手")
 st.markdown("回測區間：**2009/01/01 至今**。")
 st.divider()
 
